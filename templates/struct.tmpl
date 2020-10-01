@@ -1,0 +1,7 @@
+{{range $name,$val :=.types}}
+type {{$name}} struct {
+{{range $key,$val2 := $val -}}
+	{{UppercaseFirst $key}} {{$typ := DetermineType $val2}} {{if $typ}} {{$typ}} {{else}} {{$key}} {{end}} `yaml:"{{$key}}"`
+{{end -}}
+}
+{{end}}
