@@ -39,6 +39,8 @@ func main() {
 		log.Fatal("-configFile 必填")
 	}
 	configs := getConfigs(*configFile)
+	delete(configs, "env")
+	delete(configs, "profiles")
 	configBuff := bytes.NewBufferString("")
 	settingBuff := bytes.NewBufferString("")
 	genHeader(configBuff)
